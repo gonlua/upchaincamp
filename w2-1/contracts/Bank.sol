@@ -13,7 +13,7 @@ contract Bank {
         deposits[msg.sender] += msg.value;
     }
 
-    function withdraw() public payable {
+    function withdraw() public { // 这里不需要payable, 因为payable表示接受eth, 提取不用
         require(deposits[msg.sender] > 0, "No deposit to withdraw!");
         address payable _payableAddr = payable(msg.sender);
         _payableAddr.transfer(deposits[msg.sender]);
