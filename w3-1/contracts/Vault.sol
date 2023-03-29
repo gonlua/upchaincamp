@@ -15,7 +15,7 @@ contract Vault {
     }
 
     function deposit(uint amount) public {
-        SafeERC20.safeTransferFrom(IERC20(token), msg.sender, address(this), amount); // 解决ERC20转账失败问题
+        SafeERC20.safeTransferFrom(IERC20(token), msg.sender, address(this), amount); // safe类方法可以解决有些合约transfer没有返回值的问题
         deposits[msg.sender] += amount;
     }
 
